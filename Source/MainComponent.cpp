@@ -44,7 +44,8 @@ MainComponent::MainComponent()
 
 MainComponent::~MainComponent()
 {
-    connection->close();
+    if (connection != nullptr)
+        connection->close();
 }
 
 //==============================================================================
