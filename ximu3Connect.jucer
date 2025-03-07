@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <JUCERPROJECT id="jscRZb" name="ximu3Connect" projectType="guiapp" useAppConfig="0"
-              addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1">
+              addUsingNamespaceToJuceHeader="1" jucerFormatVersion="1">
   <MAINGROUP id="st2C7N" name="ximu3Connect">
     <GROUP id="{469217AF-E708-AC39-4509-63E539F7F17D}" name="Source">
       <FILE id="xQCDxw" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
       <FILE id="MLszrO" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
       <FILE id="lFO9Nt" name="MainComponent.cpp" compile="1" resource="0"
             file="Source/MainComponent.cpp"/>
+      <FILE id="XClHpE" name="Ximu3DeviceManager.h" compile="0" resource="0"
+            file="Source/Ximu3DeviceManager.h"/>
     </GROUP>
   </MAINGROUP>
   <MODULES>

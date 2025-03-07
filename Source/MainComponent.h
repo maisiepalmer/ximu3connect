@@ -2,6 +2,7 @@
 
 #include <JuceHeader.h>
 #include <x-IMU3/Cpp/Ximu3.hpp>
+#include "Ximu3DeviceManager.h"
 
 //==============================================================================
 /*
@@ -14,17 +15,21 @@ public:
     //==============================================================================
     MainComponent();
     ~MainComponent() override;
-
+    
     //==============================================================================
     void paint (juce::Graphics&) override;
     void resized() override;
+    
+    void connectAndStrobe (const ximu3::ConnectionInfo& connectionInfo);
 
 private:
     //==============================================================================
     // Your private member variables go here...
-    juce::TextButton button {"Click"};
+    TextButton buttonUsb {"Usb"};
+    TextButton buttonWifi {"Wifi"};
+    Ximu3DeviceManager ximu3DeviceManager;
     std::function<void(ximu3::XIMU3_InertialMessage)> inertialCallback;
-    std::shared_ptr<ximu3::Connection> connection;
+    std::unique_ptr<ximu3::Connection> connection;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };
