@@ -3,6 +3,7 @@
 #include <JuceHeader.h>
 #include <x-IMU3/Cpp/Ximu3.hpp>
 #include "Ximu3DeviceManager.h"
+#include "OSCManager.h"
 
 //==============================================================================
 /*
@@ -30,6 +31,8 @@ private:
     Ximu3DeviceManager ximu3DeviceManager;
     std::function<void(ximu3::XIMU3_InertialMessage)> inertialCallback;
     std::unique_ptr<ximu3::Connection> connection;
+    
+    OSCManager oscManager;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };

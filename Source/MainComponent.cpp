@@ -1,4 +1,5 @@
 #include "MainComponent.h"
+#include "Helpers.h"
 
 //==============================================================================
 MainComponent::MainComponent()
@@ -11,9 +12,11 @@ MainComponent::MainComponent()
 
         const std::array<float, 3> gyro = {-message.gyroscope_x, -message.gyroscope_y, message.gyroscope_z};
         const std::array<float, 3> acc = {message.accelerometer_x, message.accelerometer_y, message.accelerometer_z};
-        const std::array<float, 3> mag = {0.f, 0.f, 0.f}; // We don't have the magnetometer for these gloves
         
-        std::cout << "message.gyroscope_x" << message.gyroscope_x << std::endl;
+        // send osc message
+        oscManager.sendMessage(acc, gyro);
+        
+        //std::cout << "message.gyroscope_x" << message.gyroscope_x << std::endl;
     };
     
     buttonUsb.onClick = [this]()
@@ -66,12 +69,7 @@ MainComponent::MainComponent()
         connectAndStrobe (connectionInfo);
     };
     
-    
-    
-    
     setSize (600, 400);
-    
-    
 }
 
 
@@ -85,12 +83,7 @@ MainComponent::~MainComponent()
 //==============================================================================
 void MainComponent::paint (juce::Graphics& g)
 {
-    // (Our component is opaque, so we must completely fill the background with a solid colour)
     g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));
-
-    g.setFont (juce::FontOptions (16.0f));
-    g.setColour (juce::Colours::white);
-    g.drawText ("Hello World!", getLocalBounds(), juce::Justification::centred, true);
 }
 
 void MainComponent::resized()
